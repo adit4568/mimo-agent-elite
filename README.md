@@ -1,6 +1,4 @@
-# mimo-agent-elite
-
-# 🤖 MiMo Agent Framework
+# 🤖 MiMo Form Agent
 
 Simple AI agent that uses **Xiaomi MiMo V2.5 Pro** to auto-fill and submit web forms intelligently.
 
@@ -39,3 +37,7 @@ python agent.py --url "https://example.com/form" --config config.json
 4. Agent fills form with realistic typing delays
 5. Submits and verifies success
 ```
+
+## License
+
+MIT
