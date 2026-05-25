@@ -1,43 +1,55 @@
 # 🤖 MiMo Form Agent
 
-Simple AI agent that uses **Xiaomi MiMo V2.5 Pro** to auto-fill and submit web forms intelligently.
+# 🔍 MiMo Code Reviewer
 
-## What it does
+AI-powered code review agent using **Xiaomi MiMo V2.5 Pro**. Scans Python files and generates actionable improvement suggestions.
 
-- Reads form fields from any webpage using Playwright
-- Uses MiMo reasoning to generate contextual form responses
-- Auto-fills and submits forms with human-like behavior
-- Handles CAPTCHAs via external solver APIs
+## Features
 
-## Quick Start
+- 🐛 Bug detection & security issues
+- ⚡ Performance optimization suggestions  
+- 📝 Code style & readability improvements
+- 📊 Markdown report output
+
+## Usage
 
 ```bash
-pip install -r requirements.txt
-playwright install chromium
-python agent.py --url "https://example.com/form" --config config.json
+pip install requests
+export MIMO_API_KEY="your-key"
+
+# Review a single file
+python review.py app.py
+
+# Review entire project
+python review.py ./src --recursive
+
+# Output as markdown report
+python review.py app.py --output report.md
 ```
 
-## Config
+## Example Output
 
-```json
-{
-  "mimo_api_key": "your-key",
-  "model": "mimo-v2.5-pro",
-  "headless": true,
-  "delay_ms": 500
-}
+```
+📁 Reviewing: app.py (142 lines)
+
+🐛 [Bug] Line 23: Unchecked None return from database query
+   → Add null check before accessing .data attribute
+
+⚡ [Perf] Line 67: Using list comprehension inside loop
+   → Move filtering outside the loop to reduce O(n²) complexity
+
+📝 [Style] Line 89: Function exceeds 40 lines
+   → Extract validation logic into separate helper function
+
+Score: 7.2/10 | Issues: 3 | Suggestions: 3
 ```
 
 ## How it works
 
-```
-1. Playwright loads target page
-2. Agent extracts form fields (labels, types, placeholders)
-3. MiMo generates appropriate responses based on context
-4. Agent fills form with realistic typing delays
-5. Submits and verifies success
-```
+1. Reads Python source files
+2. Sends code chunks to MiMo V2.5 Pro for analysis
+3. Parses structured review output (bugs, perf, style)
+4. Generates formatted report
 
-## License
+Built with Xiaomi MiMo V2.5 Pro 🚀
 
-MIT
